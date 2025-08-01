@@ -184,4 +184,45 @@
       transform: translateY(0);
     }
   }
+
+  .animate-spin-slow {
+    animation: spin-slow 8s linear infinite;
+  }
+
+  @keyframes spin-slow {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  .ink-splash {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .ink-splash::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: radial-gradient(
+      circle,
+      rgba(139, 69, 19, 0.8) 0%,
+      transparent 70%
+    );
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: all 0.3s ease;
+    pointer-events: none;
+  }
+
+  .ink-splash:hover::before {
+    width: 200px;
+    height: 200px;
+  }
 }

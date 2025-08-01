@@ -2,6 +2,7 @@ import { ReactNode } from 'react'
 import Navigation from './Navigation'
 import AnimatedFooter from './AnimatedFooter'
 import DeathNoteBackground from './DeathNoteBackground'
+import MusicPlayer from './MusicPlayer'
 
 interface LayoutProps {
   children: ReactNode
@@ -16,6 +17,7 @@ const Layout = ({ children }: LayoutProps) => {
         {children}
       </main>
       <AnimatedFooter />
+      <MusicPlayer />
     </div>
   )
 }

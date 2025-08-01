@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react"
-import Header from "@/components/Header"
+
 import Hero from "@/components/Hero"
 import ContractsSection from "@/components/ContractsSection"
 import MascotSection from "@/components/MascotSection"
 import CoinsSection from "@/components/CoinsSection"
 import NotebookSection from "@/components/NotebookSection"
 import GamesSection from "@/components/GamesSection"
-import Footer from "@/components/Footer"
+
 import MemeDisclaimer from "@/components/MemeDisclaimer"
 import InteractiveBackground from "@/components/InteractiveBackground"
 import MemeToast from "@/components/MemeToast"
@@ -134,8 +134,6 @@ const Index = () => {
         <div className="absolute bottom-32 left-32 w-8 h-8 bg-neon-pink rounded-full animate-float opacity-50 animation-delay-2000ms"></div>
       </div>
 
-      <Header />
-      
       <Hero 
         showMascot={showMascot} 
         currentPhrase={memePhrases[currentPhrase]} 
@@ -164,7 +162,7 @@ const Index = () => {
 
       <GamesSection />
 
-      <Footer />
+
 
       <MemeDisclaimer 
         footerVisible={footerVisible}

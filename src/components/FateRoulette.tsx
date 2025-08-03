@@ -117,7 +117,7 @@ const FateRoulette = ({ isOpen, onClose }: FateRouletteProps) => {
       />
       
       {/* Dark paper texture */}
-      <div className="absolute inset-0 opacity-10 pointer-events-none bg-gray-800/20" />
+      <div className="absolute inset-0 opacity-10 bg-[url('data:image/svg+xml,%3Csvg width="40" height="40" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="%23ffffff" fill-opacity="0.05"%3E%3Cpath d="M20 20c0-5.5-4.5-10-10-10s-10 4.5-10 10 4.5 10 10 10 10-4.5 10-10zm10 0c0-5.5-4.5-10-10-10s-10 4.5-10 10 4.5 10 10 10 10-4.5 10-10z"/%3E%3C/g%3E%3C/svg%3E')] pointer-events-none" />
 
       <div className="relative z-10 w-full max-w-2xl mx-auto animate-scale-in">
         <div className="relative bg-gradient-to-br from-gray-900/95 to-black/95 rounded-3xl border border-red-500/30 shadow-2xl backdrop-blur-sm overflow-hidden">

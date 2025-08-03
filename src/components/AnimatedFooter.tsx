@@ -1,20 +1,18 @@
 import { useState, useEffect } from 'react'
-import MemeCoin from './MemeCoin'
+import Icon from '@/components/ui/icon'
 
 const AnimatedFooter = () => {
   const [currentPhrase, setCurrentPhrase] = useState(0)
-  const [mascotEmotion, setMascotEmotion] = useState('😈')
-  const [showSparkles, setShowSparkles] = useState(false)
+  const [coinRotation, setCoinRotation] = useState(0)
+  const [mascotBlink, setMascotBlink] = useState(false)
 
   const phrases = [
     "Этот сайт — шуточный мемный проект для веселья и креатива.",
-    "Все персонажи и контракты вымышлены и не несут юридической силы.",
+    "Все персонажи и контракты вымышлены, не имеют юридической силы.",
     "Играйте и улыбайтесь! Жизнь слишком коротка для серьёзности.",
     "Маскот напоминает: всё это ради смеха и хорошего настроения!",
-    "Death Meme Bank работает только с валютой веселья! 💰😄"
+    "Банк Судьбы работает только с валютой веселья! 💰😄"
   ]
-
-  const mascotEmotions = ['😈', '🎭', '👹', '😄', '🤔', '😉', '🌟']
 
   useEffect(() => {
     // Phrase rotation
@@ -22,40 +20,41 @@ const AnimatedFooter = () => {
       setCurrentPhrase((prev) => (prev + 1) % phrases.length)
     }, 4000)
 
-    // Mascot emotion changes
-    const emotionTimer = setInterval(() => {
-      const randomEmotion = mascotEmotions[Math.floor(Math.random() * mascotEmotions.length)]
-      setMascotEmotion(randomEmotion)
+    // Coin rotation
+    const coinTimer = setInterval(() => {
+      setCoinRotation(prev => prev + 360)
     }, 3000)
 
-    // Sparkles effect
-    const sparkleTimer = setInterval(() => {
-      setShowSparkles(true)
-      setTimeout(() => setShowSparkles(false), 1000)
-    }, 5000)
+    // Mascot blinking
+    const blinkTimer = setInterval(() => {
+      setMascotBlink(true)
+      setTimeout(() => setMascotBlink(false), 200)
+    }, 2000)
 
     return () => {
       clearInterval(phraseTimer)
-      clearInterval(emotionTimer)
-      clearInterval(sparkleTimer)
+      clearInterval(coinTimer)
+      clearInterval(blinkTimer)
     }
   }, [])
 
+  const handleCoinClick = () => {
+    setCoinRotation(prev => prev + 720) // Double spin on click
+  }
+
   const handleMascotClick = () => {
-    const newEmotion = mascotEmotions[Math.floor(Math.random() * mascotEmotions.length)]
-    setMascotEmotion(newEmotion)
-    setShowSparkles(true)
-    setTimeout(() => setShowSparkles(false), 1000)
+    setMascotBlink(true)
+    setTimeout(() => setMascotBlink(false), 400)
   }
 
   return (
-    <footer className="relative bg-gradient-to-br from-purple-900/20 to-blue-900/20 backdrop-blur-sm border-t border-purple-400/30 mt-16">
+    <footer className="relative bg-death-black/80 backdrop-blur-sm border-t border-neon-purple/20 mt-16">
       <div className="max-w-6xl mx-auto px-4 py-12">
         {/* Main Content */}
         <div className="flex flex-col lg:flex-row items-center justify-between gap-8">
           {/* Animated Text */}
           <div className="flex-1 text-center lg:text-left">
-            <div className="min-h-[4rem] flex items-center justify-center lg:justify-start">
+            <div className="min-h-[3rem] flex items-center justify-center lg:justify-start">
               <p className="text-gray-300 text-lg leading-relaxed max-w-2xl animate-fade-in">
                 {phrases[currentPhrase]}
               </p>
@@ -64,115 +63,89 @@ const AnimatedFooter = () => {
 
           {/* Interactive Elements */}
           <div className="flex items-center space-x-8">
-            {/* Meme Coin */}
-            <div className="relative">
-              <MemeCoin size="medium" />
-              {showSparkles && (
-                <div className="absolute inset-0 pointer-events-none">
-                  {Array.from({ length: 6 }, (_, i) => (
-                    <div
-                      key={i}
-                      className="absolute w-2 h-2 bg-yellow-400 rounded-full animate-ping"
-                      style={{
-                        left: `${20 + i * 15}%`,
-                        top: `${10 + (i % 3) * 30}%`,
-                        animationDelay: `${i * 200}ms`,
-                        animationDuration: '1.5s'
-                      }}
-                    />
-                  ))}
-                </div>
-              )}
-            </div>
+            {/* Animated Coin */}
+            <button
+              onClick={handleCoinClick}
+              className="group relative"
+              title="Кликни на монету!"
+            >
+              <div 
+                className="w-16 h-16 bg-gradient-to-br from-yellow-400 via-yellow-500 to-orange-500 rounded-full flex items-center justify-center shadow-lg hover:shadow-yellow-400/25 transition-all duration-300"
+                style={{ transform: `rotate(${coinRotation}deg)` }}
+              >
+                <Icon name="Coins" size={32} className="text-white" />
+              </div>
+              
+              {/* Glow effect */}
+              <div className="absolute inset-0 rounded-full bg-yellow-400/30 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10" />
+              
+              {/* Floating sparkles */}
+              <div className="absolute -top-2 -right-2 w-4 h-4 bg-yellow-300 rounded-full animate-ping opacity-75" />
+            </button>
 
             {/* Animated Mascot */}
             <button
               onClick={handleMascotClick}
               className="group relative"
-              title="Кликни на маскота!"
+              title="Подмигни маскоту!"
             >
-              <div className="w-20 h-20 bg-gradient-to-br from-purple-600 to-pink-600 rounded-full flex items-center justify-center shadow-xl hover:shadow-purple-500/25 transition-all duration-300 group-hover:scale-110 border-2 border-purple-400/50">
-                <span className="text-4xl animate-bounce group-hover:animate-ping">
-                  {mascotEmotion}
-                </span>
+              <div className="w-16 h-16 bg-gradient-to-br from-neon-purple to-neon-pink rounded-full flex items-center justify-center shadow-lg hover:shadow-neon-purple/25 transition-all duration-300 group-hover:scale-110">
+                {mascotBlink ? (
+                  <Icon name="Smile" size={32} className="text-white" />
+                ) : (
+                  <Icon name="Eye" size={32} className="text-white" />
+                )}
               </div>
               
               {/* Glow effect */}
-              <div className="absolute inset-0 rounded-full bg-purple-400/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10" />
+              <div className="absolute inset-0 rounded-full bg-neon-purple/30 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10" />
               
-              {/* Floating effects */}
-              {showSparkles && (
-                <div className="absolute -top-2 -right-2 w-6 h-6 text-yellow-300 animate-bounce">
-                  ✨
+              {/* Wink indicator */}
+              {mascotBlink && (
+                <div className="absolute -top-1 -right-1 text-yellow-300 animate-bounce">
+                  <Icon name="Sparkles" size={16} />
                 </div>
               )}
             </button>
           </div>
         </div>
 
-        {/* Divider with animation */}
-        <div className="my-8 h-px bg-gradient-to-r from-transparent via-purple-500/50 to-transparent relative">
-          <div className="absolute left-0 w-full h-px bg-gradient-to-r from-purple-400 to-pink-400 animate-pulse opacity-60" />
-        </div>
+        {/* Divider */}
+        <div className="my-8 h-px bg-gradient-to-r from-transparent via-neon-purple/50 to-transparent" />
 
         {/* Bottom Section */}
         <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-gray-400">
           <div className="flex flex-wrap items-center gap-4">
-            <span>© 2024 Death Meme Bank</span>
+            <span>© 2024 Банк Судьбы</span>
             <span>•</span>
             <span>Сделано с 💜 и мемами</span>
             <span>•</span>
-            <span>Powered by React & Магия</span>
+            <span>Powered by React & Смех</span>
           </div>
           
-          <div className="flex items-center space-x-6">
+          <div className="flex items-center space-x-4">
             <div className="flex items-center space-x-2 text-xs">
               <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
               <span>Маскот онлайн</span>
             </div>
             
             <div className="flex items-center space-x-2 text-xs">
-              <span className="text-red-400 animate-pulse">💀</span>
+              <Icon name="Heart" size={12} className="text-red-400 animate-pulse" />
               <span>100% мемов</span>
-            </div>
-            
-            <div className="flex items-center space-x-2 text-xs">
-              <span className="text-purple-400 animate-bounce">🎭</span>
-              <span>Веселье гарантировано</span>
             </div>
           </div>
         </div>
 
-        {/* Floating Particles Animation */}
+        {/* Floating Particles */}
         <div className="absolute inset-0 pointer-events-none overflow-hidden">
-          {Array.from({ length: 8 }, (_, i) => (
-            <div
-              key={i}
-              className="absolute w-1 h-1 bg-purple-400 rounded-full animate-ping opacity-30"
-              style={{
-                left: `${10 + (i * 12)}%`,
-                top: `${20 + (i % 3) * 30}%`,
-                animationDelay: `${i * 500}ms`,
-                animationDuration: '3s'
-              }}
-            />
-          ))}
-        </div>
-
-        {/* Extra magical effects */}
-        <div className="absolute top-4 right-4 opacity-20">
-          <div className="text-2xl animate-spin-slow">⚡</div>
-        </div>
-        
-        <div className="absolute bottom-4 left-4 opacity-20">
-          <div className="text-2xl animate-bounce">🌟</div>
+          <div className="absolute top-1/4 left-1/4 w-1 h-1 bg-neon-purple rounded-full animate-float opacity-60" />
+          <div className="absolute top-3/4 right-1/4 w-1 h-1 bg-neon-pink rounded-full animate-float opacity-40 animation-delay-1000ms" />
+          <div className="absolute bottom-1/2 left-3/4 w-1 h-1 bg-neon-blue rounded-full animate-float opacity-50 animation-delay-2000ms" />
         </div>
       </div>
 
-      {/* Animated bottom border */}
-      <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-purple-600 via-pink-600 to-blue-600 opacity-50">
-        <div className="h-full bg-gradient-to-r from-purple-400 to-pink-400 animate-pulse" />
-      </div>
+      {/* Bottom gradient */}
+      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-neon-purple via-neon-pink to-neon-blue opacity-50" />
     </footer>
   )
 }

@@ -23,30 +23,30 @@ const FateRoulette = ({ isOpen, onClose }: FateRouletteProps) => {
   const [timeUntilReset, setTimeUntilReset] = useState(0)
 
   const segments: RouletteSegment[] = [
-    { id: '1', icon: '💀', text: 'Символ Смерти', color: 'from-gray-600 to-black', rarity: 'common' },
-    { id: '2', icon: '📜', text: 'Страница Судьбы', color: 'from-amber-600 to-yellow-800', rarity: 'rare' },
-    { id: '3', icon: '🖤', text: 'Чёрное Сердце', color: 'from-red-900 to-black', rarity: 'common' },
-    { id: '4', icon: '👁️', text: 'Глаз Рюка', color: 'from-purple-600 to-indigo-900', rarity: 'epic' },
-    { id: '5', icon: '⚡', text: 'Молния Киры', color: 'from-yellow-500 to-orange-700', rarity: 'legendary' },
-    { id: '6', icon: '🕯️', text: 'Свеча L', color: 'from-blue-600 to-indigo-900', rarity: 'rare' },
-    { id: '7', icon: '🗝️', text: 'Ключ Истины', color: 'from-gray-500 to-gray-800', rarity: 'common' },
-    { id: '8', icon: '💎', text: 'Алмаз Судьбы', color: 'from-cyan-500 to-blue-800', rarity: 'legendary' }
+    { id: '1', icon: '💀', text: 'Мем-Череп Обычный', color: 'from-gray-600 to-black', rarity: 'common' },
+    { id: '2', icon: '📜', text: 'Мем-Череп Магический', color: 'from-amber-600 to-yellow-800', rarity: 'rare' },
+    { id: '3', icon: '🖤', text: 'Мем-Череп Тёмный', color: 'from-red-900 to-black', rarity: 'common' },
+    { id: '4', icon: '👁️', text: 'Мем-Череп Провидца', color: 'from-purple-600 to-indigo-900', rarity: 'epic' },
+    { id: '5', icon: '⚡', text: 'Мем-Череп Молнии', color: 'from-yellow-500 to-orange-700', rarity: 'legendary' },
+    { id: '6', icon: '🕯️', text: 'Мем-Череп Мудрости', color: 'from-blue-600 to-indigo-900', rarity: 'rare' },
+    { id: '7', icon: '🗝️', text: 'Мем-Череп Ключа', color: 'from-gray-500 to-gray-800', rarity: 'common' },
+    { id: '8', icon: '💎', text: 'Мем-Череп Алмазный', color: 'from-cyan-500 to-blue-800', rarity: 'legendary' }
   ]
 
   const ryukPhrases = [
-    "Хе-хе... Интересный выбор судьбы! 👹",
-    "Люди такие забавные со своей удачей... 😈",
-    "Хм, а ты неплох для человека! 🤔",
-    "Яблоки вкуснее, но это тоже неплохо! 🍎",
-    "Судьба играет с тобой... Как интересно! 🎭"
+    "Хе-хе... Отличная мем-монета-череп! 👹",
+    "ФиФи Банк одобряет твой выбор... 😈",
+    "Хм, эта монета редкая! 🤔",
+    "Мем-черепа лучше яблок! 🍎",
+    "Твоя коллекция пополняется... 🎭"
   ]
 
   const lPhrases = [
-    "Вероятность этого исхода была 23.6%... 🤓",
-    "Риск - неотъемлемая часть игры судьбы. 📊",
-    "Логично... Но жизнь не всегда логична. 🧠",
-    "Интересный паттерн поведения... 📈",
-    "Справедливость иногда случайна. ⚖️"
+    "Вероятность получить эту монету была 23.6%... 🤓",
+    "Мем-экономика ФиФи Банка работает прекрасно. 📊",
+    "Логично... Редкость определяет ценность. 🧠",
+    "Интересный результат рулетки... 📈",
+    "Коллекционирование - это искусство. ⚖️"
   ]
 
   const handleSpin = () => {
@@ -117,7 +117,7 @@ const FateRoulette = ({ isOpen, onClose }: FateRouletteProps) => {
       />
       
       {/* Dark paper texture */}
-      <div className="absolute inset-0 opacity-10 pointer-events-none bg-gray-800/20" />
+      <div className="absolute inset-0 opacity-10 bg-[url('data:image/svg+xml,%3Csvg width="40" height="40" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="%23ffffff" fill-opacity="0.05"%3E%3Cpath d="M20 20c0-5.5-4.5-10-10-10s-10 4.5-10 10 4.5 10 10 10 10-4.5 10-10zm10 0c0-5.5-4.5-10-10-10s-10 4.5-10 10 4.5 10 10 10 10-4.5 10-10z"/%3E%3C/g%3E%3C/svg%3E')] pointer-events-none" />
 
       <div className="relative z-10 w-full max-w-2xl mx-auto animate-scale-in">
         <div className="relative bg-gradient-to-br from-gray-900/95 to-black/95 rounded-3xl border border-red-500/30 shadow-2xl backdrop-blur-sm overflow-hidden">
@@ -133,10 +133,10 @@ const FateRoulette = ({ isOpen, onClose }: FateRouletteProps) => {
             
             <div className="text-center">
               <h2 className="text-3xl font-bold text-red-400 mb-2">
-                Рулетка Судьбы
+                Рулетка Мем-Черепов
               </h2>
               <p className="text-gray-400">
-                Пусть тёмные силы решат твою участь...
+                Крути рулетку и получай редкие мем-монеты-черепа...
               </p>
             </div>
           </div>
@@ -216,7 +216,7 @@ const FateRoulette = ({ isOpen, onClose }: FateRouletteProps) => {
                   ) : (
                     <>
                       <Icon name="RotateCcw" size={20} />
-                      <span>Крутить колесо судьбы</span>
+                      <span>Крутить рулетку мем-черепов</span>
                     </>
                   )}
                 </div>
@@ -295,7 +295,7 @@ const FateRoulette = ({ isOpen, onClose }: FateRouletteProps) => {
           {/* Footer */}
           <div className="px-6 pb-4 border-t border-red-500/20">
             <p className="text-xs text-gray-500 text-center italic">
-              "Судьба не играет в кости... Но иногда крутит колесо" - Вселенная Death Note
+              "Каждая мем-монета-череп имеет свою силу и ценность" - ФиФи Банк
             </p>
           </div>
         </div>

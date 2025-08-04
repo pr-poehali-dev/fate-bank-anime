@@ -106,7 +106,7 @@ const DeathContactModal = ({ isOpen, onClose }: DeathContactModalProps) => {
       />
       
       {/* Paper texture overlay */}
-      <div className="absolute inset-0 opacity-5 pointer-events-none bg-gray-900/10" />
+      <div className="absolute inset-0 opacity-5 bg-[url('data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%23ffffff" fill-opacity="0.1"%3E%3Cpath d="m36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] pointer-events-none" />
       
       {/* Success State */}
       {isSuccess && (
@@ -122,10 +122,10 @@ const DeathContactModal = ({ isOpen, onClose }: DeathContactModalProps) => {
             
             <div className="space-y-4">
               <h3 className="text-3xl font-bold text-red-400 animate-typewriter">
-                Ваше послание принято...
+                Мем-контракт создан!
               </h3>
               <p className="text-xl text-gray-300 animate-fade-in-delay">
-                Судьба будет решать
+                Уникальная мем-монета-череп уже в пути!
               </p>
             </div>
           </div>
@@ -135,7 +135,7 @@ const DeathContactModal = ({ isOpen, onClose }: DeathContactModalProps) => {
             <div className="animate-slide-up">
               <div className="text-6xl mb-4 animate-bounce">👹</div>
               <p className="text-lg text-purple-300 italic animate-typewriter-slow">
-                "Интересно, что решит человеческая судьба..."
+                "Поздравляю! Твоя мем-монета-череп скоро прибудет в ФиФи Банк!"
               </p>
             </div>
           )}
@@ -172,10 +172,10 @@ const DeathContactModal = ({ isOpen, onClose }: DeathContactModalProps) => {
                 </div>
                 
                 <h2 className="text-2xl font-bold text-red-400 mb-2">
-                  Банк Судьбы
+                  ФиФи Банк
                 </h2>
                 <p className="text-gray-400 text-sm">
-                  Запишите ваше послание в тетрадь
+                  Создайте мем-контракт для получения черепов
                 </p>
               </div>
             </div>
@@ -263,7 +263,7 @@ const DeathContactModal = ({ isOpen, onClose }: DeathContactModalProps) => {
                         ? 'border-green-500 focus:ring-green-500/50'
                         : 'border-gray-600 focus:ring-red-500/50'
                     }`}
-                    placeholder="Напишите ваше послание судьбе..."
+                    placeholder="Опишите какую мем-монету-череп хотите получить..."
                   />
                   {formData.message && !errors.message && (
                     <div className="absolute right-3 top-3">
@@ -301,7 +301,7 @@ const DeathContactModal = ({ isOpen, onClose }: DeathContactModalProps) => {
                     ) : (
                       <>
                         <Icon name="Send" size={20} className="text-white" />
-                        <span className="text-white">Отправить послание</span>
+                        <span className="text-white">Создать мем-контракт</span>
                       </>
                     )}
                   </div>
@@ -317,7 +317,7 @@ const DeathContactModal = ({ isOpen, onClose }: DeathContactModalProps) => {
             {/* Mysterious footer */}
             <div className="px-6 pb-4">
               <p className="text-xs text-gray-500 text-center italic">
-                "Каждое слово имеет вес... Каждая буква - силу" - L
+                "Каждая мем-монета-череп уникальна и бесценна" - ФиФи Банк
               </p>
             </div>
           </div>
